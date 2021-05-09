@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "323163241352",
+    "project_id": "kpsi-rpl",
+    "storage_bucket": "kpsi-rpl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323163241352:android:8cbb558b7b94e566a9d83d",
+        "android_client_info": {
+          "package_name": "com.kpsi.rpl_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323163241352-luj1j2u24kk283q59t6d4omkkq213ddu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kpsi.rpl_mobile",
+            "certificate_hash": "0835fab4765fca8e9025e4857d0821ba7e6be048"
+          }
+        },
+        {
+          "client_id": "323163241352-11gic44966g9nqiu4rlsvcaqt1cvtnrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrQInAib9Epdj2Cef-cHxml2s57JnrTNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323163241352-11gic44966g9nqiu4rlsvcaqt1cvtnrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
