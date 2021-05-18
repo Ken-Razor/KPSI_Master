@@ -14,7 +14,7 @@ class CreateKoorsTable extends Migration
     public function up()
     {
         Schema::create('koor', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nama_koor');
             $table->string('email_koor');
             $table->timestamps();

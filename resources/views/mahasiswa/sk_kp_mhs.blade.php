@@ -20,29 +20,26 @@ Pengajuan Surat Keterangan
                                     <h6 class="m-0 font-weight-bold text-primary">Tambah Pengajuan</h6>
                                 </div>
                                 <div class="card-body">
-
-                                    <div class="col">
-                                        <div class="mb-3">
-                                        <label>Semester</label>
-                                        <select class="form-control" style="width: 50%" name="semester">
-                                            <option selected>Pilih...</option>
-                                            <option value="1">Gasal</option>
-                                            <option value="2">Genap</option>
-                                        </select>
-                                        </div>    
+                                    <form action="/mhs/tambah/sk" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="col">
+                                            <div class="mb-3">
+                                            <label>Semester</label>
+                                            <input type="text" class="form-control" name="semester" id="semester" placeholder="Masukan Tahun" value="Genap" readonly>
+                                            </div>
                                     </div>
 
                                         <div class="col">
                                             <div class="mb-3">
                                             <label>Tahun</label>
-                                            <input type="text" class="form-control" name="tahun" placeholder="Masukan Tahun" required="required">
+                                            <input type="text" class="form-control" name="tahun" placeholder="Masukan Tahun" value="2020/2021" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col">
                                         <div class="mb-3">
                                         <label>Nim</label>
-                                        <input type="text" class="form-control" name="nim" placeholder="Masukan Nim" required="required">
+                                        <input type="text" class="form-control" name="nim" placeholder="Masukan Nim" required="required" value="{{ Auth::user()->nim }}" readonly>
                                         </div>
                                         </div>
 
@@ -63,21 +60,21 @@ Pengajuan Surat Keterangan
                                         <div class="col">
                                         <div class="mb-3">
                                         <label>No Telepon</label>
-                                        <input type="text" class="form-control" name="telepon" placeholder="Masukan Telepon" required="required">
+                                        <input type="text" class="form-control" name="no_telp" placeholder="Masukan Telepon">
                                         </div>
                                         </div>
 
                                         <div class="col">
                                         <div class="mb-3">
                                         <label>Alamat</label>
-                                        <textarea class="form-control" name="alamat" placeholder="Masukan Alamat" required="required"></textarea>
+                                        <textarea class="form-control" name="alamat" placeholder="Masukan Alamat" ></textarea>
                                         </div>
                                         </div>
 
                                         <div class="col">
                                         <div class="mb-3">
                                         <label>Fax</label>
-                                        <input type="text" class="form-control" name="fax" placeholder="Masukan Fax" required="required">
+                                        <input type="text" class="form-control" name="fax" placeholder="Masukan Fax">
                                         </div>
                                         </div>
 
@@ -91,19 +88,58 @@ Pengajuan Surat Keterangan
                                         </div>
                                         
                                         <div class="card-body">
-                                            <a href="#" class="btn btn-success btn-block">Tambah</a>
+                                            <input type="submit" class="btn btn-success btn-block" value="Tambah">  
                                         </div>
                                 </div>
+                                    </form>
+                                    
                                 </div>
                                 
                             </div>
                                 
                         </div>
 
+
+                        
+
                         <div class="col-lg-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan  </h6>
+                                </div>
+
+                                <table class="table table-hover">
+  <thead>
+    <tr>
+      <!-- <th scope="col">ID  </th> -->
+      <th scope="col">No</th>
+      <th scope="col">Lembaga</th>
+      <th scope="col">Tanggal Ujian</th>
+      <th scope="col">Status</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($datask as $dsk)
+      <tr>
+        <td>{{$loop->iteration}}</td>
+        <td>{{$dsk->lembaga}}</td>
+        <td>Proses</td>
+        <td>Proses</td>
+      </tr>
+    @endforeach
+
+       
+  </tbody>
+</table>
+                                
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan  </h6>
                                 </div>
                                 <div class="card-body">
                                 <div class="col-xl-3 col-md-6 mb-4">
@@ -139,7 +175,7 @@ Pengajuan Surat Keterangan
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- /.container-fluid -->

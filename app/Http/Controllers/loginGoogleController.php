@@ -5,15 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mahasiswa;
 use App\Dosen;
-use App\Koor;
 use Socialite;
 use Auth;
-use App\User;
-// use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Contracts\Auth\Authenticatable;
-
-
-
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Str;
 
 class loginGoogleController extends Controller
@@ -30,26 +24,14 @@ class loginGoogleController extends Controller
             $existMhs = Mahasiswa::Where('email',$googleUser->email)->first();
             $existDosen= Dosen::Where('email_dosen',$googleUser->email)->first();
 
-
-            $existKoor= Koor::Where('email_koor',$googleUser->email)->first();
-
-
-
-
             if($existMhs){
                 Auth::login($existMhs);
                 return redirect()->to('/mhs/index_mhs');
             }
             elseif($existDosen) {
                 Auth::guard('dosen')->login($existDosen);
-                return redirect()->to('/dosen/index_dosen');
+                return redirect()->to('/dosen');
             }
-
-            elseif($existKoor) {
-                Auth::guard('koor')->login($existKoor);
-                return redirect()->to('/koor/index_koor');
-            }
-
             else {
                 if(Str::endsWith($googleUser->email, "@si.ukdw.ac.id"))
                 {
@@ -59,7 +41,6 @@ class loginGoogleController extends Controller
                     // $mahasiswa->google_id = $googleUser->id;
                     $mahasiswa->save();
                     Auth::login($mahasiswa);
-
                     return redirect()->to('/mhs/index_mhs');
                 } 
                 elseif(Str::endsWith($googleUser->email, "@gmail.com"))
@@ -70,21 +51,8 @@ class loginGoogleController extends Controller
                     // $dosen->google_id = $googleUser->id;
                     $dosen->save();
                     Auth::login($dosen);
-                    return redirect()->to('/dosen/index_dosen');
+                    return redirect()->to('/dosen');
                 }
-
-                elseif(Str::endsWith($googleUser->email, "@students.ukdw.ac.id"))
-                {
-                    $koor = new koor;
-                    $koor->nama_koor = $googleUser->name;
-                    $koor->email_koor = $googleUser->email;
-                    // $koor->google_id = $googleUser->id;
-                    $koor->save();
-                    Auth::login($koor);
-                    return redirect()->to('/koor/index_koor');
-                }
-
-
             }
         }catch(Exception $e){
             return 'error';

@@ -19,18 +19,27 @@ Route::get('/', function () {
 
 // Auth::login();
 
+
+
 Route::get('/redirect', 'loginGoogleController@redirect');
 Route::get('/callback', 'loginGoogleController@callback');
 Route::get('/logout', 'loginGoogleController@logout');
 
 
 Route::get('/mhs/index_mhs','MahasiswaController@index_mhs');
+
 Route::get('/mhs/pengajuan_sk_kp','MahasiswaController@sk_kp_mhs');
 Route::get('/mhs/pengajuan_pra_kp','MahasiswaController@pra_kp_mhs');
 Route::get('/mhs/pengajuan_kp','MahasiswaController@kp_mhs');
 Route::get('/mhs/tgl_ujian','MahasiswaController@tgl_ujian');
+Route::get('/mhs/profile/{id}','MahasiswaController@updateProfile');
+Route::put('/updateProfileAct','MahasiswaController@updateProfileAct');
 
 
+Route::post('/mhs/tambah/sk','MahasiswaController@sk_kp_mhs_act');
+
+
+Route::get('/data','MahasiswaController@data');
 
 
 

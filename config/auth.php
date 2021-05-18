@@ -15,7 +15,6 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'guard' => 'mhs',
         'passwords' => 'users',
     ],
 
@@ -42,10 +41,10 @@ return [
             'provider' => 'users',
         ],
 
-        'mhs' => [
-            'driver' => 'session',
-            'provider' => 'mahasiswa',
-        ],
+        // 'mhs' => [
+        //     'driver' => 'session',
+        //     'provider' => 'mahasiswa',
+        // ],
 
         'api' => [
             'driver' => 'token',
@@ -53,25 +52,25 @@ return [
             'hash' => false,
         ],
 
-        'mahasiswa' => [
-        'driver' => 'session',
-        'provider' => 'mahasiswa',
-        ],
+        // 'mahasiswa' => [
+        // 'driver' => 'session',
+        // 'provider' => 'mahasiswa',
+        // ],
 
-        'login' => [
-            'driver' => 'session',
-            'provider' => 'login',
-        ],
+        // 'login' => [
+        //     'driver' => 'session',
+        //     'provider' => 'login',
+        // ],
 
-        'dosen' => [
-        'driver' => 'session',
-        'provider' => 'dosen',
-        ],
+        // 'dosen' => [
+        // 'driver' => 'session',
+        // 'provider' => 'dosen',
+        // ],
 
-        'koor' => [
-        'driver' => 'session',
-        'provider' => 'koor',
-        ],
+        // 'koor' => [
+        // 'driver' => 'session',
+        // 'provider' => 'koor',
+        // ],
     ],
 
     /*
@@ -95,28 +94,33 @@ return [
 
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Mahasiswa::class,
         ],
 
-        'mahasiswa' => [
-        'driver' => 'eloquent',
-        'model' => App\Mahasiswa::class,
-        ],
+        // 'mahasiswas' => [
+        // 'driver' => 'eloquent',
+        // 'model' => App\Mahasiswa::class,
+        // ],
 
-        'login' => [
-        'driver' => 'eloquent',
-        'model' => App\Mahasiswa::class,
-        ],
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Admin::class,
+        // ],
 
-        'dosen' => [
-        'driver' => 'eloquent',
-        'model' => App\Dosen::class,
-        ],
+        // 'login' => [
+        // 'driver' => 'eloquent',
+        // 'model' => App\Mahasiswa::class,
+        // ],
 
-        'koor' => [
-        'driver' => 'eloquent',
-        'model' => App\Koor::class,
-        ],
+        // 'dosen' => [
+        // 'driver' => 'eloquent',
+        // 'model' => App\Dosen::class,
+        // ],
+
+        // 'koor' => [
+        // 'driver' => 'eloquent',
+        // 'model' => App\Koor::class,
+        // ],
 
 
         // 'users' => [
