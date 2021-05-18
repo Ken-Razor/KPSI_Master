@@ -21,43 +21,42 @@ Pengajuan KP
                                     <h6 class="m-0 font-weight-bold text-primary">Tambah Pengajuan KP</h6>
                                 </div>
                                 <div class="card-body">
-
-                                    <div class="col">
-                                        <div class="mb-3">
-                                        <label>Semester</label>
-                                        <select class="form-control" style="width: 50%" name="semester">
-                                            <option selected>Pilih...</option>
-                                            <option value="1">Gasal</option>
-                                            <option value="2">Genap</option>
-                                        </select>
-                                        </div>    
-                                    </div>
-
-                                        <div class="col">
+                                    <form action="/mhs/tambah/kp" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="col">
                                             <div class="mb-3">
-                                            <label>Tahun</label>
-                                            <input type="text" class="form-control" name="tahun" placeholder="Masukan Tahun" required="required">
+                                            <label>Semester</label>
+                                            <input type="text" class="form-control" name="semester" id="semester" placeholder="Masukan Tahun" value="Genap" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col">
-                                        <div class="mb-3">
-                                        <label>Judul KP</label>
-                                        <input type="text" class="form-control" name="judul" placeholder="Masukan Judul Kp" required="required">
-                                        </div>
+                                            <div class="mb-3">
+                                            <label>Tahun</label>
+                                            <input type="text" class="form-control" name="tahun" placeholder="Masukan Tahun" value="2020/2021" readonly>
+                                            </div>
                                         </div>
 
+                                        
+
                                         <div class="col">
-                                        <div class="mb-3">
-                                        <label>Nim</label>
-                                        <input type="text" class="form-control" name="nim" placeholder="Masukan Nim" required="required">
-                                        </div>
+                                            <div class="mb-3">
+                                            <label>Nim</label>
+                                            <input type="text" class="form-control" name="nim" placeholder="Masukan Nim" required="required" value="{{ Auth::user()->nim }}" readonly>
+                                            </div>
                                         </div>
 
                                         <div class="col">
                                         <div class="mb-3">
                                         <label>Nik</label>
                                         <input type="text" class="form-control" name="nik" placeholder="Masukan Nik" required="required">
+                                        </div>
+                                        </div>
+
+                                        <div class="col">
+                                        <div class="mb-3">
+                                        <label>Judul KP</label>
+                                        <input type="text" class="form-control" name="judul" placeholder="Masukan Judul Kp" required="required">
                                         </div>
                                         </div>
 
@@ -106,7 +105,7 @@ Pengajuan KP
                                         <div class="col">
                                         <div class="mb-3">
                                         <label>No Telepon</label>
-                                        <input type="text" class="form-control" name="telepon" placeholder="Masukan Telepon" required="required">
+                                        <input type="text" class="form-control" name="no_telp" placeholder="Masukan Telepon" required="required">
                                         </div>
                                         </div>
 
@@ -126,17 +125,94 @@ Pengajuan KP
                                         </div>
                                         </div>
                                         
-                                        <div class="card-body">
-                                            <a href="#" class="btn btn-success btn-block">Tambah</a>
+                                         <div class="card-body">
+                                            <input type="submit" class="btn btn-success btn-block" value="Tambah">  
                                         </div>
                                 </div>
                                 </div>
                                 
                             </div>
+                                    </form>
+                                    
+
+                                        
+
+                                     
+                                        
                                 
                         </div>
 
-                        <div class="col-lg-6">
+                         <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Pengajuan Pra KP  </h6>
+                                </div>
+
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col">ID  </th> -->
+                                      <th scope="col">No</th>
+                                      <th scope="col">Lembaga</th>
+                                      <th scope="col">Tanggal Ujian</th>
+                                      <th scope="col">Status</th>
+                                      
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                   @foreach($datapra as $dpra)
+                                      <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$dpra->lembaga}}</td>
+                                        <td>Proses</td>
+                                        <td>Proses</td>
+                                      </tr>
+                                    @endforeach
+                                   
+
+                                       
+                                  </tbody>
+                                </table>
+                            </div>
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Pengajuan  KP  </h6>
+                                </div>
+
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col">ID  </th> -->
+                                      <th scope="col">No</th>
+                                      <th scope="col">Judul</th>
+                                      <th scope="col">Pembimbing</th>
+                                      <th scope="col">Tanggal Ujian</th>
+                                      <th scope="col">Status</th>
+                                      
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($datakp as $dkp)
+                                      <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$dkp->judul}}</td>
+                                        <td>{{$dkp->penguji}}</td>
+                                        <td>Proses</td>
+                                        <td>Proses</td>
+                                      </tr>
+                                    @endforeach
+                                   
+
+                                       
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="col-lg-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan KP</h6>
@@ -175,7 +251,7 @@ Pengajuan KP
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- /.container-fluid -->

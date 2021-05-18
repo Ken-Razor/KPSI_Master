@@ -6,7 +6,7 @@ Jadwal Ujian
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1 class="h3 mb-4 text-gray-800" style="padding-left:15px;">TANGGAL UJIAN</h1>
+                    <h1 class="h3 mb-4 text-gray-800" style="padding-left:15px;">JADWAL UJIAN</h1>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

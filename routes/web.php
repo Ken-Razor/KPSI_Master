@@ -41,6 +41,10 @@ Route::post('/mhs/tambah/sk','MahasiswaController@sk_kp_mhs_act');
 
 Route::get('/data','MahasiswaController@data');
 
+Route::post('/mhs/tambah/prakp','MahasiswaController@pra_kp_mhs_act');
+
+Route::post('/mhs/tambah/kp','MahasiswaController@kp_mhs_act');
+
 
 
 

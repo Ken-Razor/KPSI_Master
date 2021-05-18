@@ -13,11 +13,11 @@ Halaman Utama Mahasiswa
                     <div class="row">
                         <!-- ***** Header Text Start ***** -->
                         <div class="container">
-                            <h1 class="center">SELAMAT DATANG DI SIKP</h1>
+                            <!-- <h1 class="center"><img src="{{asset('img/lo.png')}}" style="width: 15%"></h1> -->
                         </div>
                         <!-- ***** Header Text End ***** -->   
 
-                        <div class="card shadow mb-4 border-bottom-primary">
+                        <!-- <div class="card shadow mb-4 border-bottom-primary">
                             <img src="{{asset('img/xp2.jpg')}}" style="width:100%">
                             <a href="/mhs/pengajuan_sk_kp" class="center">PENGAJUAN SK-KP</a>
                         </div>
@@ -36,7 +36,7 @@ Halaman Utama Mahasiswa
                             <img src="{{asset('img/xp2.jpg')}}" style="width:100%">
                             <a href="/mhs/tgl_ujian" class="center">TANGGAL UJIAN</a>
                         </div>
-
+ -->
 
                     </div>
                     </div>

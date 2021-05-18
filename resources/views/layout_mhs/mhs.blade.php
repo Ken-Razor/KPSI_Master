@@ -36,7 +36,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SIKP</div>
+                <div class="sidebar-brand-text mx-3">Mahasiswa</div>
             </a>
 
             <!-- Divider -->
@@ -106,6 +106,7 @@
                     </button>        
 
                     <!-- Topbar Navbar -->
+                    <img src="{{asset('img/Logo-si.jpg')}}" style="width: 25%">
                     <ul class="navbar-nav ml-auto">
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -174,7 +175,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; WilKenKris 2021</span>
                     </div>
                 </div>
             </footer>

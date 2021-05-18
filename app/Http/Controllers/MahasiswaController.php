@@ -87,10 +87,14 @@ class MahasiswaController extends Controller
                 'dokumen' => $name
                         ]);
 
-
-            echo "Gambar berhasil di upload";
+              if($update){
+                return redirect('/mhs/pengajuan_sk_kp')->with('sukses-tambah','Wahh berhasil ditambah nih datanya...');
+            }else{
+                return redirect('/mhs/pengajuan_sk_kp')->with('sukses-gagal','Wahh gagal ditambah nih datanya...');
+            }
+            
         }else{
-            echo "Gagal upload gambar";
+            echo "Errorr";
         }
     }
 
@@ -98,11 +102,98 @@ class MahasiswaController extends Controller
 
     public function pra_kp_mhs()
     {
-    	return view('mahasiswa/pra_kp_mhs');
+        $id = Auth::user()->id;
+        $datapra = DB::SELECT("SELECT * FROM pra_kp WHERE id_mhs='$id'");
+        return view('mahasiswa/pra_kp_mhs', compact('datapra'));
     }
+
+    public function pra_kp_mhs_act(Request $request)
+    {
+        $id = Auth::user()->id;
+
+        if($request->hasFile('dokumen')){
+            $resorce  = $request->file('dokumen');
+            $name   = $resorce->getClientOriginalName();
+            $resorce->move(\base_path() ."/public/dok_pra", $name);
+
+            $tambah = DB::table('pra_kp')
+              ->where('id', $id)
+              ->insert([
+                'id_mhs' => $id,
+                'semester' => $request->semester,
+                'tahun' => $request->tahun,
+                'nim' => $request->nim,
+                'nik' => $request->nik,
+                'tools' => $request->tools,
+                'spesifikasi' => $request->spesifikasi,
+                'penguji' => $request->penguji,
+                'ruang' => $request->ruang,
+                'lembaga' => $request->lembaga,
+                'pimpinan' => $request->pimpinan,
+                'no_telp' => $request->no_telp,
+                'alamat' => $request->alamat,
+                'dokumen' => $name
+                        ]);
+           if($tambah){
+                return redirect('/mhs/pengajuan_pra_kp')->with('sukses-tambah','Wahh berhasil ditambah nih datanya...');
+            }else{
+                return redirect('/mhs/pengajuan_pra_kp')->with('sukses-gagal','Wahh gagal ditambah nih datanya...');
+            }
+        }else{
+            echo "Errorr";
+        }
+    }
+
     public function kp_mhs()
     {
-    	return view('mahasiswa/kp_mhs');
+         $id = Auth::user()->id;
+        $datapra = DB::SELECT("SELECT * FROM pra_kp WHERE id_mhs='$id'");
+        $datakp = DB::SELECT("SELECT * FROM kp WHERE id_mhs='$id'");
+        return view('mahasiswa/kp_mhs', compact('datapra','datakp'));
+    }
+
+    public function kp_mhs_act(Request $request)
+    {
+        $id = Auth::user()->id;
+
+        if($request->hasFile('dokumen')){
+            $resorce  = $request->file('dokumen');
+            $name   = $resorce->getClientOriginalName();
+            $resorce->move(\base_path() ."/public/dok_kp", $name);
+
+            $tambah = DB::table('kp')
+              ->where('id', $id)
+              ->insert([
+                'id_mhs' => $id,
+                'semester' => $request->semester,
+                'tahun' => $request->tahun,
+                'nim' => $request->nim,
+                'nik' => $request->nik,
+                'judul' => $request->judul,
+                'tools' => $request->tools,
+                'spesifikasi' => $request->spesifikasi,
+                'penguji' => $request->penguji,
+                'ruang' => $request->ruang,
+                'lembaga' => $request->lembaga,
+                'pimpinan' => $request->pimpinan,
+                'no_telp' => $request->no_telp,
+                'alamat' => $request->alamat,
+                'dokumen' => $name
+                        ]);
+           if($tambah){
+                return redirect('/mhs/pengajuan_kp')->with('sukses-tambah','Wahh berhasil ditambah nih datanya...');
+            }else{
+                return redirect('/mhs/pengajuan_kp')->with('sukses-gagal','Wahh gagal ditambah nih datanya...');
+            }
+        }else{
+            echo "Errorr";
+        }
+    }
+
+
+    public function tgl_ujian()
+    {
+        return view('mahasiswa/tgl_ujian');
     }
 
 }

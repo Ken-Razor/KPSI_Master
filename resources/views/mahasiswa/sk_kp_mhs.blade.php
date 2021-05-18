@@ -27,7 +27,7 @@ Pengajuan Surat Keterangan
                                             <label>Semester</label>
                                             <input type="text" class="form-control" name="semester" id="semester" placeholder="Masukan Tahun" value="Genap" readonly>
                                             </div>
-                                    </div>
+                                        </div>
 
                                         <div class="col">
                                             <div class="mb-3">
@@ -37,10 +37,10 @@ Pengajuan Surat Keterangan
                                         </div>
 
                                         <div class="col">
-                                        <div class="mb-3">
-                                        <label>Nim</label>
-                                        <input type="text" class="form-control" name="nim" placeholder="Masukan Nim" required="required" value="{{ Auth::user()->nim }}" readonly>
-                                        </div>
+                                            <div class="mb-3">
+                                            <label>Nim</label>
+                                            <input type="text" class="form-control" name="nim" placeholder="Masukan Nim" required="required" value="{{ Auth::user()->nim }}" readonly>
+                                            </div>
                                         </div>
 
                                         <div class="col">
@@ -105,7 +105,7 @@ Pengajuan Surat Keterangan
                         <div class="col-lg-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Surat Keterangan KP  </h6>
                                 </div>
 
                                 <table class="table table-hover">
