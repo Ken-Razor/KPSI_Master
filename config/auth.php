@@ -62,15 +62,15 @@ return [
         //     'provider' => 'login',
         // ],
 
-        // 'dosen' => [
-        // 'driver' => 'session',
-        // 'provider' => 'dosen',
-        // ],
+        'dosen' => [
+        'driver' => 'session',
+        'provider' => 'dosen',
+        ],
 
-        // 'koor' => [
-        // 'driver' => 'session',
-        // 'provider' => 'koor',
-        // ],
+        'koor' => [
+        'driver' => 'session',
+        'provider' => 'koor',
+        ],
     ],
 
     /*
@@ -112,15 +112,15 @@ return [
         // 'model' => App\Mahasiswa::class,
         // ],
 
-        // 'dosen' => [
-        // 'driver' => 'eloquent',
-        // 'model' => App\Dosen::class,
-        // ],
+        'dosen' => [
+        'driver' => 'eloquent',
+        'model' => App\Dosen::class,
+        ],
 
-        // 'koor' => [
-        // 'driver' => 'eloquent',
-        // 'model' => App\Koor::class,
-        // ],
+        'koor' => [
+        'driver' => 'eloquent',
+        'model' => App\Koor::class,
+        ],
 
 
         // 'users' => [

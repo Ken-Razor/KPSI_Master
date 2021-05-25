@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mahasiswa;
 use App\User;
+use App\Sk_kp;
+
+
 
 use Auth;
 
@@ -96,6 +99,20 @@ class MahasiswaController extends Controller
         }else{
             echo "Errorr";
         }
+    }
+
+
+
+    public function downloadall()
+    {
+        $downloads = DB::table('sk_kp')->get();
+        return view('koor.verifikasi_sk', compact('downloads'));
+    }
+
+    public function download($id)
+    {
+        $dl = File::find($id);
+        return Storage::download($dl->$resorce, $dl->$name);
     }
 
     

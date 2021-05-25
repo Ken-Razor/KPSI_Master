@@ -15,6 +15,7 @@ class CreateKoorsTable extends Migration
     {
         Schema::create('koor', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nip')->nullable();
             $table->string('nama_koor');
             $table->string('email_koor');
             $table->timestamps();

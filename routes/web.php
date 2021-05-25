@@ -47,11 +47,10 @@ Route::post('/mhs/tambah/kp','MahasiswaController@kp_mhs_act');
 
 
 
+Route::get('dosen/index_dosen','DosenController@index_dosen');
 
 
-Route::get('/dosen/index_dosen', function () {
-    return view('dosen/index_dosen');
-});
+
 
 Route::get('/dosen/daftar_bimbingan', function () {
     return view('dosen/data_bimbingan');
@@ -62,6 +61,27 @@ Route::get('/dosen/jadwal_ujian', function () {
 });
 
 
-Route::get('/koor/index_koor', function () {
-    return view('koor/index_koor');
-});
+//Koordinator
+Route::get('/koor/index_koor','KoorController@index_koor');
+Route::get('/koor/verifikasi_sk','KoorController@verifikasi_sk');
+
+Route::get('/file/sk/all','MahasiswaController@downloadall')->name('downloadfileall');
+
+
+Route::get('/file/sk/{id}','MahasiswaController@download')->name('downloadfile');
+
+
+
+
+
+
+
+//Nantii
+Route::get('/koor/registrasi','KoorController@registrasi');
+Route::get('/koor/login','KoorController@login');
+Route::post('/koor/registrasi/tambah','UserKoorController@store');
+Route::get('/koor/signin','KoorController@dashboard');
+
+
+
+

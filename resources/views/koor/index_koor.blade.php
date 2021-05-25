@@ -10,11 +10,11 @@ Halaman Utama Koordinator
                     <div class="row">
                         <!-- ***** Header Text Start ***** -->
                         <div class="container">
-                            <h1 class="center">SELAMAT DATANG DI SIKP</h1>
+                            <h1 class="center">SELAMAT DATANG DI SIKP </h1>
                         </div>
                         <!-- ***** Header Text End ***** -->   
 
-                        <div class="card shadow mb-4 border-bottom-primary">
+                        <!-- <div class="card shadow mb-4 border-bottom-primary">
                             <img src="{{asset('img/xp2.jpg')}}" style="width:100%">
                             <a href="" class="center">Verifikasi Surat Keterangan KP</a>
                         </div>
@@ -38,7 +38,7 @@ Halaman Utama Koordinator
                         <div class="card shadow mb-4 border-bottom-primary">
                             <img src="{{asset('img/xp2.jpg')}}" style="width:100%">
                             <a href="" class="center">Set Batas Pelaksanaan KP</a>
-                        </div>
+                        </div> -->
                     </div>
                     </div>
                 </div>

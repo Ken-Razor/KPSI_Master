@@ -13,5 +13,5 @@ class Koor extends Authenticatable
 	use Notifiable;
  	protected $guard = 'koor';
     protected $table = 'koor';
-    protected $fillable = ['nama_koor','email_koor'];
+    protected $fillable = ['nama_koor','email_koor','nip'];
 }

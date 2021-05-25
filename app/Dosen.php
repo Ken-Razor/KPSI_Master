@@ -13,5 +13,5 @@ class Dosen extends Authenticatable
 	use Notifiable;
  	protected $guard = 'dosen';
     protected $table = 'dosen';
-    protected $fillable = ['nama_dosen','email_dosen'];
+    protected $fillable = ['nama_dosen','email_dosen','nip'];
 }
