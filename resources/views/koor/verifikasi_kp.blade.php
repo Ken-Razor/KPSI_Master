@@ -1,6 +1,6 @@
 @extends('../layout_koor.koor')
 @section('title-koor')
-Verifikasi Surat Keterangan
+Verifikasi KP
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@ Verifikasi Surat Keterangan
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">PENGAJUAN SURAT KETERANGAN</h1>
+                    <h1 class="h3 mb-4 text-gray-800">KP</h1>
 
                     <table class="table table-striped table-hover">
                       <thead>
@@ -41,9 +41,9 @@ Verifikasi Surat Keterangan
                                     </td>
                                     <td>
                                         @if($dt->status == 1)
-                                        <a href="{{ url('verifikasi/sk/status/' . $dt->id) }}" class="btn btn-sm btn-danger">Tolak</a>
+                                        <a href="{{ url('verifikasi/kp/status/' . $dt->id) }}" class="btn btn-sm btn-danger">Tolak</a>
                                         @else
-                                        <a href="{{ url('verifikasi/sk/status/' . $dt->id) }}" class="btn btn-sm btn-success">Setuju</a>
+                                        <a href="{{ url('verifikasi/kp/status/' . $dt->id) }}" class="btn btn-sm btn-success">Setuju</a>
                                         @endif
                                     </td>
 

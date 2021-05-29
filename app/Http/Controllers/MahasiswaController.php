@@ -165,8 +165,8 @@ class MahasiswaController extends Controller
     {
          $id = Auth::user()->id;
         $datapra = DB::SELECT("SELECT * FROM pra_kp WHERE id_mhs='$id'");
-        $datakp = DB::SELECT("SELECT * FROM kp WHERE id_mhs='$id'");
-        return view('mahasiswa/kp_mhs', compact('datapra','datakp'));
+        $data = DB::SELECT("SELECT * FROM kp WHERE id_mhs='$id'");
+        return view('mahasiswa/kp_mhs', compact('datapra','data'));
     }
 
     public function kp_mhs_act(Request $request)
@@ -212,5 +212,7 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa/tgl_ujian');
     }
+
+    
 
 }

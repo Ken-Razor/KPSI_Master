@@ -14,7 +14,7 @@ class CreateSkKpsTable extends Migration
     public function up()
     {
         Schema::create('sk_kp', function (Blueprint $table) {
-            $table->increments('id_sk');
+            $table->increments('id');
             $table->string('id_mhs');
             $table->string('semester')->nullable();
             $table->string('tahun')->nullable();
@@ -25,6 +25,7 @@ class CreateSkKpsTable extends Migration
             $table->string('alamat');
             $table->string('fax');
             $table->string('dokumen');
+            $table->integer('status')->default(3);
             $table->timestamps();
         });
     }

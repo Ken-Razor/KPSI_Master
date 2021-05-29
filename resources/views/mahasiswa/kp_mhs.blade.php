@@ -164,8 +164,16 @@ Pengajuan KP
                                       <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$dpra->lembaga}}</td>
-                                        <td>Proses</td>
-                                        <td>Proses</td>
+                                        <td>Tanggal Ujian</td>
+                                        <td>
+                                            @if($dpra->status == 3)
+                                            <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>
+                                            @elseif($dpra->status == 1)
+                                            <a href="#" class="btn btn-sm btn-success">Setuju</a>
+                                            @else
+                                            <a href="#" class="btn btn-sm btn-danger">Ditolak</a>
+                                            @endif
+                                        </td>
                                       </tr>
                                     @endforeach
                                    
@@ -193,13 +201,19 @@ Pengajuan KP
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    @foreach($datakp as $dkp)
+                                    @foreach($data as $dkp)
                                       <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$dkp->judul}}</td>
                                         <td>{{$dkp->penguji}}</td>
-                                        <td>Proses</td>
-                                        <td>Proses</td>
+                                        <td>Tanggal Ujian</td>
+                                        <td>@if($dkp->status == 3)
+                                            <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>
+                                            @elseif($dkp->status == 1)
+                                            <a href="#" class="btn btn-sm btn-success">Setuju</a>
+                                            @else
+                                            <a href="#" class="btn btn-sm btn-danger">Ditolak</a>
+                                            @endif</td>
                                       </tr>
                                     @endforeach
                                    

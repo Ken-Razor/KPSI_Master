@@ -14,7 +14,7 @@ class CreatePraKpsTable extends Migration
     public function up()
     {
         Schema::create('pra_kp', function (Blueprint $table) {
-            $table->increments('id_pra');
+            $table->increments('id');
             $table->string('id_mhs');
             $table->string('semester')->nullable();
             $table->string('tahun')->nullable();
@@ -29,6 +29,7 @@ class CreatePraKpsTable extends Migration
             $table->string('no_telp')->nullable();
             $table->string('alamat');
             $table->string('dokumen');
+            $table->integer('status')->default(3);
             $table->timestamps();
         });
     }

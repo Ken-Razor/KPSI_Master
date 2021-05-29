@@ -38,11 +38,13 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block"><img src="{{asset('img/lo.png')}}" style="margin-left: 50px; margin-top: 10px"></div>
+                            <div class="col-lg-6 d-none d-lg-block"><img src="{{asset('img/logo3.png')}}" style="margin-left: 50px; margin-top: 10px"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
+                                    <div class="text-center" style="margin-top: 100px;">
+
+                                        <h1 class="h4 text-gray-900 mb-4"></h1>
+                                        
                                         <br>
                                         <small>Silakan menggunakan akun email anda <br> @si untuk mahasiswa | @staff untuk dosen</small>
                                     </div>

@@ -59,9 +59,15 @@
             </li>
 
              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/koor/verifikasi_prakp">
                     <i class="fas fa-clipboard-list"></i>
-                    <span>Verifikasi Pra KP dan KP</span></a>
+                    <span>Verifikasi Pra KP</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/koor/verifikasi_kp">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Verifikasi KP</span></a>
             </li>
 
             <!-- Nav Item - Charts -->
