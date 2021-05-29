@@ -22,19 +22,25 @@ Pengajuan Surat Keterangan
                                 <div class="card-body">
                                     <form action="/mhs/tambah/sk" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @foreach ($dajaran as $da)
+                                            
+                                        
                                         <div class="col">
                                             <div class="mb-3">
                                             <label>Semester</label>
-                                            <input type="text" class="form-control" name="semester" id="semester" placeholder="Masukan Tahun" value="Genap" readonly>
+                                            <input type="text" class="form-control" name="semester" id="semester" placeholder="Masukan Tahun" value="{{$da->semester}}"
+                                            readonly> 
                                             </div>
                                         </div>
+                                        
 
                                         <div class="col">
                                             <div class="mb-3">
                                             <label>Tahun</label>
-                                            <input type="text" class="form-control" name="tahun" placeholder="Masukan Tahun" value="2020/2021" readonly>
+                                            <input type="text" class="form-control" name="tahun" placeholder="Masukan Tahun" value="{{$da->tahun}}" readonly>
                                             </div>
                                         </div>
+                                        @endforeach
 
                                         <div class="col">
                                             <div class="mb-3">

@@ -90,16 +90,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/koor/set/ajaran">
                     <i class="fas fa-clipboard-list"></i>
-                    <span>Set Semester</span></a>
+                    <span>Set Ajaran</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-clipboard-list"></i>
-                    <span>Set Tahun</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -152,7 +147,35 @@
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
+                @if (session('status'))
+        <div class="alert alert-success" role="alert">
+             {{ session('status') }}
+        </div>
+            @endif
 
+            <div class="panel-heading">
+                                @if(session('sukses-tambah'))
+                                <div class="alert alert-success mt-8" role="alert" >
+                                    {{session('sukses-tambah')}}
+                                </div>
+                                @endif
+                        </div>
+
+            <div class="panel-heading">
+                                @if(session('sukses-ubah'))
+                                <div class="alert alert-warning  mt-8" role="alert" >
+                                    {{session('sukses-ubah')}}
+                                </div>
+                                @endif
+                        </div>
+
+            <div class="panel-heading">
+                                @if(session('sukses-hapus'))
+                                <div class="alert alert-danger  mt-8" role="alert" >
+                                    {{session('sukses-hapus')}}
+                                </div>
+                                @endif
+                        </div>
                 <!-- Main Content -->
                     @yield('content')
                 <!-- End Content -->

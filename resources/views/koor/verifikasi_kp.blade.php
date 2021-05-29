@@ -29,6 +29,7 @@ Verifikasi KP
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$dt->nim}}</td>
                                     <td>{{$dt->lembaga}}</td>
+                                    
                                     <td>{{$dt->dokumen}} | <a href="dok_sk/{{$dt->dokumen}}" download="{{ $dt->dokumen }}">Lihat</a></td>
                                     <td>
                                         @if($dt->status == 3)
@@ -50,7 +51,14 @@ Verifikasi KP
                                   </tr>
                                   @endforeach
                                   
-                                  
+                                  @foreach($i as $image)
+ 
+                                   <div> 
+                                      <img src="{{route('getfile', $image)}}"  class="img-responsive" />
+                                   </div>
+                                                    
+                                   
+                                   @endforeach
                                    
 
                                        

@@ -62,6 +62,9 @@ Route::get('/dosen/jadwal_ujian', function () {
 
 
 //Koordinator
+Route::get('/koor/set/ajaran','KoorController@setajaran');
+Route::put('/koor/edit/set/ajaran','KoorController@setajaranAct');
+
 Route::get('/koor/index_koor','KoorController@index_koor');
 Route::get('/koor/verifikasi_sk','KoorController@verifikasi_sk');
 Route::get('/koor/verifikasi_prakp','KoorController@verifikasi_prakp');
@@ -72,6 +75,8 @@ Route::get('/file/sk/all','MahasiswaController@downloadall')->name('downloadfile
 
 Route::get('/file/sk/{id}','MahasiswaController@download')->name('downloadfile');
 
+// Route::get('/file/sk/{id}','KoorController@downsk');
+// Route::get('get/{filename}', [KoorController::class, 'verifikasi_kp']);
 
 
 Route::get('/setuju/surat_keterangan/{id}','KoorController@sk_setuju');

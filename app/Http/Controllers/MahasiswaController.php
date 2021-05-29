@@ -61,8 +61,8 @@ class MahasiswaController extends Controller
     {
         $id = Auth::user()->id;
         $datask = DB::SELECT("SELECT * FROM sk_kp WHERE id_mhs='$id'");
-        
-        return view('mahasiswa/sk_kp_mhs', compact('datask'));
+        $dajaran = DB::SELECT("SELECT * FROM ajaran");
+        return view('mahasiswa/sk_kp_mhs', compact('datask','dajaran'));
     	
     }
 
@@ -121,7 +121,8 @@ class MahasiswaController extends Controller
     {
         $id = Auth::user()->id;
         $datapra = DB::SELECT("SELECT * FROM pra_kp WHERE id_mhs='$id'");
-        return view('mahasiswa/pra_kp_mhs', compact('datapra'));
+        $dajaran = DB::SELECT("SELECT * FROM ajaran");
+        return view('mahasiswa/pra_kp_mhs', compact('datapra','dajaran'));
     }
 
     public function pra_kp_mhs_act(Request $request)
@@ -166,7 +167,8 @@ class MahasiswaController extends Controller
          $id = Auth::user()->id;
         $datapra = DB::SELECT("SELECT * FROM pra_kp WHERE id_mhs='$id'");
         $data = DB::SELECT("SELECT * FROM kp WHERE id_mhs='$id'");
-        return view('mahasiswa/kp_mhs', compact('datapra','data'));
+        $dajaran = DB::SELECT("SELECT * FROM ajaran");
+        return view('mahasiswa/kp_mhs', compact('datapra','data','dajaran'));
     }
 
     public function kp_mhs_act(Request $request)
@@ -212,6 +214,8 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa/tgl_ujian');
     }
+
+    
 
     
 
