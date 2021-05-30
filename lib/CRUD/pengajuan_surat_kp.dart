@@ -1,19 +1,19 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rpl_mobile/API/apiService.dart';
-import 'package:rpl_mobile/CRUD/tambahDosen.dart';
+import 'package:rpl_mobile/CRUD/tambahSurat.dart';
 import 'package:rpl_mobile/CRUD/updateDosen.dart';
 import '../model.dart';
 
-class DosenCRUD extends StatefulWidget {
-  DosenCRUD({Key key, this.title}) : super(key: key);
+class SuratCRUD extends StatefulWidget {
+  SuratCRUD({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _DosenCRUDState createState() => _DosenCRUDState();
+  _SuratCRUDState createState() => _SuratCRUDState();
 }
 
-class _DosenCRUDState extends State<DosenCRUD> {
+class _SuratCRUDState extends State<SuratCRUD> {
   final _formKey = GlobalKey<FormState>();
 
   List<Dosen> listDosen;
@@ -39,8 +39,8 @@ class _DosenCRUDState extends State<DosenCRUD> {
                 Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                TambahDosen(title: "Input Data Dosen")))
+                            builder: (context) => TambahSurat(
+                                title: "Input Data Surat Pengajuan")))
                     .then(onGoBack);
               })
         ],

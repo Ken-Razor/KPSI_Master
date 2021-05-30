@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:rpl_mobile/API/apiService.dart';
 import 'package:rpl_mobile/Animation/fadeAnimation.dart';
 import 'package:rpl_mobile/CRUD/pengajuan_surat_kp.dart';
 import 'package:rpl_mobile/CRUD/jadwalCRUD.dart';
 import 'package:rpl_mobile/CRUD/pengajuan_prakp.dart';
 import 'package:rpl_mobile/CRUD/pengajuan_kp.dart';
 import 'dart:async';
-
+import 'package:http/http.dart' as http;
 import 'package:rpl_mobile/Colors/constant.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:rpl_mobile/Pages/forgotPage.dart';
+import 'package:rpl_mobile/model.dart';
+import 'dart:convert';
 
-class Dashboard extends StatefulWidget {
+class KpsiDashboard extends StatefulWidget {
+  KpsiDashboard({Key key, this.title}) : super(key: key);
+  final String title;
   static const String id = 'dashboard';
 
   @override
-  _DashboardState createState() => _DashboardState();
+  _KpsiDashboardState createState() => _KpsiDashboardState();
 }
 
 // WARNING, NOTE BUAT TEMAN TEMAN HEHE
@@ -22,8 +27,20 @@ class Dashboard extends StatefulWidget {
 // KARENA CODINGAN INI BELUM DIAJARKAN DI MATERI PERKULIAHAN
 // COPY BOLEH TAPI JANGAN DIJIPLAK YA :D, HARUS DIPAHAMI ALURNYA
 
-class _DashboardState extends State<Dashboard> {
+class _KpsiDashboardState extends State<KpsiDashboard> {
   final _formKey = GlobalKey<FormState>();
+  Future<DashboardKen> futureDashboardKen;
+
+  FutureOr onGoBack(dynamic value) {
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureDashboardKen = fetchDashboard();
+  }
+
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour < 12) {
@@ -39,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     Color primaryColor = Color.fromRGBO(3, 155, 229, 1);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(244, 244, 244, 1),
+      backgroundColor: Color.fromRGBO(255, 255, 255, 255),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -47,13 +64,6 @@ class _DashboardState extends State<Dashboard> {
             children: <Widget>[
               Stack(
                 children: <Widget>[
-                  ClipPath(
-                    clipper: CustomShapeClipper(),
-                    child: Container(
-                      height: 350.0,
-                      decoration: BoxDecoration(color: primaryColor),
-                    ),
-                  ),
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
@@ -67,7 +77,7 @@ class _DashboardState extends State<Dashboard> {
                             Text(
                               greeting(),
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 14.0,
                               ),
                             ),
@@ -75,7 +85,7 @@ class _DashboardState extends State<Dashboard> {
                             Text(
                               'Ken Sanio',
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.bold),
                             )
@@ -99,7 +109,7 @@ class _DashboardState extends State<Dashboard> {
                         EdgeInsets.only(top: 120.0, right: 25.0, left: 25.0),
                     child: Container(
                       width: double.infinity,
-                      height: 370.0,
+                      height: 300.0,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -133,12 +143,12 @@ class _DashboardState extends State<Dashboard> {
                                               MaterialPageRoute(
                                                   builder:
                                                       (BuildContext context) =>
-                                                          DosenCRUD()));
+                                                          SuratCRUD()));
                                         },
                                       ),
                                     ),
                                     SizedBox(height: 8.0),
-                                    Text('Pengajuan Surat Keterangan',
+                                    Text('Pengajuan SK',
                                         style: TextStyle(
                                             color: Colors.black54,
                                             fontSize: 13,
@@ -161,51 +171,51 @@ class _DashboardState extends State<Dashboard> {
                                               MaterialPageRoute(
                                                   builder:
                                                       (BuildContext context) =>
-                                                          MahasiswaCRUD()));
+                                                          ForgotPage()));
                                         },
                                       ),
                                     ),
                                     SizedBox(height: 8.0),
-                                    Text('Mahasiswa',
+                                    Text('Pengajuan Pra KP',
                                         style: TextStyle(
                                             color: Colors.black54,
                                             fontSize: 13,
                                             fontWeight: FontWeight.bold))
                                   ],
                                 ),
-                                Column(
-                                  children: <Widget>[
-                                    Material(
-                                      borderRadius:
-                                          BorderRadius.circular(100.0),
-                                      color: Colors.orange.withOpacity(0.1),
-                                      child: IconButton(
-                                        padding: EdgeInsets.all(15.0),
-                                        icon: Icon(Icons.assignment),
-                                        color: Colors.orange,
-                                        iconSize: 30.0,
-                                        onPressed: () {
-                                          Navigator.of(context)
-                                              .push(MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                JadwalCRUD(),
-                                          ));
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(height: 8.0),
-                                    Text('Jadwal',
-                                        style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold))
-                                  ],
-                                )
+                                // Column(
+                                //   children: <Widget>[
+                                //     Material(
+                                //       borderRadius:
+                                //           BorderRadius.circular(100.0),
+                                //       color: Colors.orange.withOpacity(0.1),
+                                //       child: IconButton(
+                                //         padding: EdgeInsets.all(15.0),
+                                //         icon: Icon(Icons.assignment),
+                                //         color: Colors.orange,
+                                //         iconSize: 30.0,
+                                //         onPressed: () {
+                                //           Navigator.of(context)
+                                //               .push(MaterialPageRoute(
+                                //             builder: (BuildContext context) =>
+                                //                 JadwalCRUD(),
+                                //           ));
+                                //         },
+                                //       ),
+                                //     ),
+                                //     SizedBox(height: 8.0),
+                                //     Text('Jadwal',
+                                //         style: TextStyle(
+                                //             color: Colors.black54,
+                                //             fontSize: 13,
+                                //             fontWeight: FontWeight.bold))
+                                //   ],
+                                // )
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 40.0),
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -224,13 +234,13 @@ class _DashboardState extends State<Dashboard> {
                                           Navigator.of(context)
                                               .push(MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                MatakuliahCRUD(),
+                                                ForgotPage(),
                                           ));
                                         },
                                       ),
                                     ),
                                     SizedBox(height: 8.0),
-                                    Text('Matakuliah',
+                                    Text('Pengajuan KP',
                                         style: TextStyle(
                                             color: Colors.black54,
                                             fontSize: 12,
@@ -259,7 +269,7 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                     ),
                                     SizedBox(height: 8.0),
-                                    Text('Coming Soon',
+                                    Text('Tanggal Ujian',
                                         style: TextStyle(
                                             color: Colors.black54,
                                             fontSize: 12,
@@ -281,7 +291,7 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                     ),
                                     SizedBox(height: 8.0),
-                                    Text('Attention',
+                                    Text('Pengumuman',
                                         style: TextStyle(
                                             color: Colors.black54,
                                             fontSize: 12,
@@ -291,41 +301,6 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 15.0),
-                          Divider(),
-                          SizedBox(height: 15.0),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Expanded(
-                                  child: Text(
-                                    'Mau Tau Fitur Lebih Lanjut?',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                SizedBox(width: 40.0),
-                                Material(
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  color: Colors.blueAccent.withOpacity(0.1),
-                                  child: IconButton(
-                                    icon: Icon(Icons.arrow_forward_ios),
-                                    color: Colors.blueAccent,
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  ForgotPage()));
-                                    },
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
                         ],
                       ),
                     ),
@@ -333,20 +308,75 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
+                padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
                 child: Text(
-                  'Dibawah ini Coming Soon',
+                  'Pengumuman Admin KPSI',
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.7),
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 35.0, bottom: 25.0),
+                child: Container(
+                  height: 150.0,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      UpcomingCard(
+                        title: 'Nanti update disini',
+                        value: 280.0,
+                        color: Colors.purple,
+                      ),
+                      UpcomingCard(
+                        title: "Isinya Gambar",
+                        value: 260.0,
+                        color: Colors.blue,
+                      ),
+                      UpcomingCard(
+                        title: "Mohon ditunggu",
+                        value: 260.0,
+                        color: Colors.yellow,
+                      ),
+                      UpcomingCard(
+                        title: "Masih Proses",
+                        value: 260.0,
+                        color: Colors.pink,
+                      ),
+                      // UpcomingCard(
+                      //   title: 'Cred Card Text Two',
+                      //   value: 210.0,
+                      //   color: Colors.orange,
+                      // ),
+                      // UpcomingCard(
+                      //   title: 'Cred Card Text Two',
+                      //   value: 110.0,
+                      //   color: Colors.pink,
+                      // ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<DashboardKen> fetchDashboard() async {
+    final response = await http.get(
+        'https://argouchiha.000webhostapp.com/api/progmob/dashboard/72180234');
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return DashboardKen.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
   }
 }
 
@@ -378,7 +408,7 @@ class UpcomingCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: 15.0),
       child: Container(
-        width: 120.0,
+        width: 200.0,
         decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.all(Radius.circular(25.0))),
@@ -391,11 +421,11 @@ class UpcomingCard extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold)),
               SizedBox(height: 30.0),
-              Text('$value',
-                  style: TextStyle(
-                      fontSize: 22.0,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold))
+              // Text('$value',
+              //     style: TextStyle(
+              //         fontSize: 2.0,
+              //         color: Colors.white,
+              //         fontWeight: FontWeight.bold))
             ],
           ),
         ),

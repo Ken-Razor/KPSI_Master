@@ -2,10 +2,9 @@ import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:rpl_mobile/DashboardUAS/dashboardKPSI.dart';
+import 'package:rpl_mobile/DashboardKPSI/dashboardKPSI.dart';
 import 'package:rpl_mobile/tugaspertemuan8.dart';
 import 'account.dart';
-import 'dashboard.dart';
 import 'forgotPage.dart';
 // import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
@@ -32,7 +31,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
 //  static const TextStyle optionStyle =
 //      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    UasDashboard(),
+    KpsiDashboard(),
     ForgotPage(),
     Account(),
   ];
@@ -90,7 +89,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
           GestureDetector(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Dashboard()));
+                  MaterialPageRoute(builder: (context) => KpsiDashboard()));
             },
             child: Container(
               decoration: BoxDecoration(
