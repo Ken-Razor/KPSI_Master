@@ -51,14 +51,7 @@ Verifikasi KP
                                   </tr>
                                   @endforeach
                                   
-                                  @foreach($i as $image)
- 
-                                   <div> 
-                                      <img src="{{route('getfile', $image)}}"  class="img-responsive" />
-                                   </div>
-                                                    
-                                   
-                                   @endforeach
+                                  
                                    
 
                                        

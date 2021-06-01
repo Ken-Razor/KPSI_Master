@@ -13,24 +13,33 @@ Jadwal Ujian
                                 <thead>
                                     <tr class="center">
                                         <th style="width:2%;">No</th>
-                                        <th style="width:15%;">Nim</th>
-                                        <th style="width:15%;">Nama</th>
-                                        <th style="width:15%;">Tanggal</th>
+                                        <th style="width:15%;">Judul</th>
+                                        <th style="width:15%;">Pembimbing</th>
+                                        <th style="width:15%;">Penguji</th>
+                                        <th style="width:10%;">Tanggal</th>
                                         <th style="width:10%;">Jam</th>
                                         <th style="width:10%;">Ruangan</th>
-                                        <th style="width:15%;">Dosen Penguji</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    @foreach($dkp as $kp)
+                                    @foreach($data as $dt)
+                                      <td>{{$loop->iteration}}</td>
+                                      <td>{{$kp->judul}}</td>
+
+                                      
+                                      
+                                      <td>{{$dt->dosbing}}</td>
+                                      <td>{{$dt->dosuji}}</td>
+                                      <td>{{$dt->tanggal}}</td>
+                                      <td>{{$dt->jam}}</td>
+                                      <td>{{$dt->ruangan}}</td>
                                     </tr>
+                                    @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

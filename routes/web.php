@@ -31,7 +31,7 @@ Route::get('/mhs/index_mhs','MahasiswaController@index_mhs');
 Route::get('/mhs/pengajuan_sk_kp','MahasiswaController@sk_kp_mhs');
 Route::get('/mhs/pengajuan_pra_kp','MahasiswaController@pra_kp_mhs');
 Route::get('/mhs/pengajuan_kp','MahasiswaController@kp_mhs');
-Route::get('/mhs/tgl_ujian','MahasiswaController@tgl_ujian');
+Route::get('/mhs/tgl_ujian/{nim}','MahasiswaController@lihat_jadwal_for_mahasiswa');
 Route::get('/mhs/profile/{id}','MahasiswaController@updateProfile');
 Route::put('/updateProfileAct','MahasiswaController@updateProfileAct');
 
@@ -69,6 +69,7 @@ Route::get('/koor/index_koor','KoorController@index_koor');
 Route::get('/koor/verifikasi_sk','KoorController@verifikasi_sk');
 Route::get('/koor/verifikasi_prakp','KoorController@verifikasi_prakp');
 Route::get('/koor/verifikasi_kp','KoorController@verifikasi_kp');
+Route::get('/koor/penjadwalan_ujian','KoorController@penjadwalan_ujian');
 
 Route::get('/file/sk/all','MahasiswaController@downloadall')->name('downloadfileall');
 
@@ -87,6 +88,14 @@ Route::put('/setuju/surat_keterangan/act','KoorController@sk_setuju_act');
 Route::get('verifikasi/sk/status/{id}','KoorController@status_sk');
 Route::get('verifikasi/prakp/status/{id}','KoorController@status_prakp');
 Route::get('verifikasi/kp/status/{id}','KoorController@status_kp');
+
+
+//PENJADWALAN UJIAN
+Route::get('/koor/atur/jadwal/ujian/{id}','KoorController@form_penjadwalan_ujian');
+
+Route::post('/koor/atur/jadwal/ujian/simpan/{id}','KoorController@form_penjadwalan_ujian_act');
+
+Route::get('/koor/lihat/jadwal/{nim}','KoorController@lihat_jadwal_ujian');
 
 
 

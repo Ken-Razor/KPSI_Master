@@ -75,7 +75,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="/mhs/tgl_ujian">
+                <a class="nav-link" href="/mhs/tgl_ujian/{{Auth::user()->nim}}">
                 <i class="fas fa-calendar-alt"></i>
                     <span>Jadwal Ujian</span></a>
             </li>

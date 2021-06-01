@@ -120,7 +120,7 @@ class KoorController extends Controller
         $data = DB::select("SELECT * FROM kp");
         $datapra = DB::select("SELECT * FROM kp");
         $downloads = DB::table('kp')->get();
-        
+
         return view ('koor/verifikasi_kp', compact('data','downloads','datapra'));
     }
 
@@ -156,6 +156,47 @@ class KoorController extends Controller
             
     //     return view('koor/verifikasi_kp', compact('i'));
     // }
+
+
+    public function penjadwalan_ujian()
+    {
+        $data = DB::select("SELECT * FROM kp WHERE status='1'");
+        return view('/koor/penjadwalan_ujian', compact('data'));
+    }
+
+    public function form_penjadwalan_ujian(Request $request, $id)
+    {
+        $id = $request->route('id');
+        $data = DB::select("SELECT * FROM kp WHERE id='$id'");
+        $ddosen = DB::SELECT("SELECT * FROM dosen"); 
+        return view('/koor/form_penjadwalan_ujian', compact('data','ddosen'));
+    }
+
+    public function form_penjadwalan_ujian_act(Request $request, $id)
+    {
+        $id = $request->route('id');
+        $update = DB::table('jadwal_ujian')
+              ->where('id', $id)
+              ->insert([
+                'nim' => $request->nim,
+                'dosbing' => $request->dosbing,
+                'dosuji' => $request->dosuji,
+                'tanggal' => $request->tanggal,
+                'jam' => $request->jam,
+                'ruangan' => $request->ruangan
+                        ]);
+
+        return redirect('/koor/penjadwalan_ujian')->with('sukses-tambah','Wahh Ajaran berhasil atur jadwal nih');
+    }
+
+    public function lihat_jadwal_ujian(Request $request, $nim)
+    {
+        $nim = $request->route('nim');
+        $data = DB::select("SELECT * FROM jadwal_ujian WHERE nim='$nim'");
+        return view('/koor/lihat_jadwal_ujian', compact('data'));
+    }
+
+     
 
     
 

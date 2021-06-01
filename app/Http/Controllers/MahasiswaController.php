@@ -210,12 +210,17 @@ class MahasiswaController extends Controller
     }
 
 
-    public function tgl_ujian()
+    
+
+    public function lihat_jadwal_for_mahasiswa(Request $request, $nim)
     {
-        return view('mahasiswa/tgl_ujian');
+        $nim = $request->route('nim');
+        $data = DB::select("SELECT * FROM jadwal_ujian WHERE nim='$nim'");
+        $dkp = DB::select("SELECT * FROM kp WHERE nim='$nim'");
+        return view('/mahasiswa/tgl_ujian', compact('data','dkp'));
     }
 
-    
+
 
     
 

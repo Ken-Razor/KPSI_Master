@@ -72,7 +72,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/koor/penjadwalan_ujian">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Penjadwalan Ujian</span></a>
             </li>
@@ -183,7 +183,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; WilKenKris 2021</span>
                     </div>
                 </div>
             </footer>
