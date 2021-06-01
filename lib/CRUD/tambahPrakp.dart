@@ -8,18 +8,18 @@ import 'package:flutter/services.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
 
-class TambahSurat extends StatefulWidget {
-  TambahSurat({Key key, @required this.title}) : super(key: key);
+class TambahPrakp extends StatefulWidget {
+  TambahPrakp({Key key, @required this.title}) : super(key: key);
   final String title;
 
   @override
-  _TambahSuratState createState() => _TambahSuratState(title);
+  _TambahPrakpState createState() => _TambahPrakpState(title);
 }
 
-class _TambahSuratState extends State<TambahSurat> {
+class _TambahPrakpState extends State<TambahPrakp> {
   final GlobalKey<FormState> _formState = GlobalKey<FormState>();
   final String title;
-  _TambahSuratState(this.title);
+  _TambahPrakpState(this.title);
   bool isLoading = false;
   Dosen dosen = new Dosen();
   File _imageFile;
@@ -39,6 +39,9 @@ class _TambahSuratState extends State<TambahSurat> {
 
   TextEditingController nimController = TextEditingController();
   TextEditingController tahunController = TextEditingController();
+  TextEditingController judulController = TextEditingController();
+  TextEditingController toolsController = TextEditingController();
+  TextEditingController spesifikasiController = TextEditingController();
   TextEditingController lembagaController = TextEditingController();
   TextEditingController pimpinanController = TextEditingController();
   TextEditingController phoneNumController = TextEditingController();
@@ -141,6 +144,72 @@ class _TambahSuratState extends State<TambahSurat> {
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Masukkan Nim Anda'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        child: Text(
+                          "Judul Kerja Praktik",
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black)),
+                        child: TextField(
+                          controller: judulController,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Masukkan judul KP anda'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        child: Text(
+                          "Tools",
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black)),
+                        child: TextField(
+                          controller: toolsController,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Masukkan tools KP Anda'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        child: Text(
+                          "Spesifikasi Peranglat Lunak/ Pekerjaan KP",
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black)),
+                        child: TextField(
+                          controller: spesifikasiController,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Tuliskan Spesifikasi Perangkat Lunak'),
                         ),
                       ),
                       SizedBox(
@@ -341,7 +410,7 @@ class _TambahSuratState extends State<TambahSurat> {
                         height: 15,
                       ),
                       _imageFile == null
-                          ? Text("Silahkan memilih gambar terlebih dahulu")
+                          ? Text("*Silahkan upload pdf terlebih dahulu")
                           : Image.file(
                               _imageFile,
                               fit: BoxFit.cover,

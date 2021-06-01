@@ -171,7 +171,7 @@ class _KpsiDashboardState extends State<KpsiDashboard> {
                                               MaterialPageRoute(
                                                   builder:
                                                       (BuildContext context) =>
-                                                          ForgotPage()));
+                                                          PrakpCRUD()));
                                         },
                                       ),
                                     ),
@@ -234,7 +234,7 @@ class _KpsiDashboardState extends State<KpsiDashboard> {
                                           Navigator.of(context)
                                               .push(MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                ForgotPage(),
+                                                KPCRUD(),
                                           ));
                                         },
                                       ),
@@ -263,7 +263,7 @@ class _KpsiDashboardState extends State<KpsiDashboard> {
                                           Navigator.of(context)
                                               .push(MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                ForgotPage(),
+                                                JadwalCRUD(),
                                           ));
                                         },
                                       ),
@@ -310,7 +310,7 @@ class _KpsiDashboardState extends State<KpsiDashboard> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
                 child: Text(
-                  'Pengumuman Admin KPSI',
+                  'Status Pengajuan Anda',
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.7),
                       fontWeight: FontWeight.bold,
@@ -320,22 +320,23 @@ class _KpsiDashboardState extends State<KpsiDashboard> {
               Padding(
                 padding: EdgeInsets.only(left: 35.0, bottom: 25.0),
                 child: Container(
-                  height: 150.0,
+                  height: 180.0,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
                       UpcomingCard(
-                        title: 'Nanti update disini',
+                        title: 'PT. Membangun Bangsa',
                         value: 280.0,
-                        color: Colors.purple,
+                        color: Colors.green,
                       ),
                       UpcomingCard(
-                        title: "Isinya Gambar",
+                        title:
+                            "Pra-KP: Analisis Flutter dan Laravel PT Membangun Bangsa",
                         value: 260.0,
-                        color: Colors.blue,
+                        color: Colors.red,
                       ),
                       UpcomingCard(
-                        title: "Mohon ditunggu",
+                        title: "KP : Analisis Laravel",
                         value: 260.0,
                         color: Colors.yellow,
                       ),

@@ -29,19 +29,19 @@ class _JadwalCRUDState extends State<JadwalCRUD> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CRUD JADWAL"),
+        title: Text("Daftar Ujian KP Anda"),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              TambahJadwal(title: "Input Data Jadwal")))
-                  .then(onGoBack);
-            },
-          )
+          // IconButton(
+          //   icon: Icon(Icons.add),
+          //   onPressed: () {
+          //     Navigator.push(
+          //             context,
+          //             MaterialPageRoute(
+          //                 builder: (context) =>
+          //                     TambahJadwal(title: "Input Data Jadwal")))
+          //         .then(onGoBack);
+          //   },
+          // )
         ],
       ),
       body: FutureBuilder(

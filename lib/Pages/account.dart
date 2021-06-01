@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:rpl_mobile/Colors/constant.dart';
+import 'package:rpl_mobile/Pages/forgotPage.dart';
 import 'package:rpl_mobile/Pages/loginPage.dart';
 import 'package:rpl_mobile/provider/google_sign_in.dart';
 
@@ -93,12 +94,40 @@ class _AccountState extends State<Account> {
                         color: Colors.lightBlue,
                       ),
                       title: Text(
-                        'Email: ken.sanio@si.ukdw.ac.id ',
+                        'ken.sanio@si.ukdw.ac.id ',
                         style: TextStyle(
                           color: Colors.teal.shade900,
                           fontFamily: 'Poppins',
                           fontSize: 18.0,
                         ),
+                      ),
+                    )),
+                Card(
+                    color: Colors.orange,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
+                    child: new InkWell(
+                      onTap: () async {
+                        setState(() {
+                          showSpinner = true;
+                        });
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => ForgotPage(),
+                        ));
+                      },
+                      child: Container(
+                        width: 400.0,
+                        height: 55.0,
+                        child: ListTile(
+                            title: Text(
+                          "Edit Account",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: kBackgroundColor,
+                          ),
+                        )),
                       ),
                     )),
                 Card(

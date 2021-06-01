@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Pemrograman Mobile',
+      title: 'KPSI UKDW',
       theme: ThemeData(
         scaffoldBackgroundColor: kBackgroundColor,
         fontFamily: "Poppins",
@@ -38,7 +38,6 @@ class _MyAppState extends State<MyApp> {
       routes: {
         SplashScreenPage.id: (context) => SplashScreenPage(),
         LoginPage.id: (context) => LoginPage(),
-        TugasPertemuan8.id: (context) => TugasPertemuan8(),
       },
     );
   }

@@ -3,18 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rpl_mobile/API/apiService.dart';
 import 'package:rpl_mobile/CRUD/tambahMahasiswa.dart';
+import 'package:rpl_mobile/CRUD/tambahPrakp.dart';
 import 'package:rpl_mobile/CRUD/updateMahasiswa.dart';
 import 'package:rpl_mobile/model.dart';
 // Batas SEBELUM UAS
 
-class MahasiswaCRUD extends StatefulWidget {
-  MahasiswaCRUD({Key key, this.title}) : super(key: key);
+class PrakpCRUD extends StatefulWidget {
+  PrakpCRUD({Key key, this.title}) : super(key: key);
   final String title;
   @override
-  _MahasiswaCRUDState createState() => _MahasiswaCRUDState();
+  _PrakpCRUDState createState() => _PrakpCRUDState();
 }
 
-class _MahasiswaCRUDState extends State<MahasiswaCRUD> {
+class _PrakpCRUDState extends State<PrakpCRUD> {
   final _formKey = GlobalKey<FormState>();
 
   List<Mahasiswa> listMahasiswa;
@@ -32,7 +33,7 @@ class _MahasiswaCRUDState extends State<MahasiswaCRUD> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CRUD MAHASISWA"),
+        title: Text("Pengajuan Pra KP"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -41,7 +42,7 @@ class _MahasiswaCRUDState extends State<MahasiswaCRUD> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              TambahMahasiswa(title: "Input Data Mahasiswa")))
+                              TambahPrakp(title: "Input Data Pra KP mu")))
                   .then(onGoBack);
             },
           )

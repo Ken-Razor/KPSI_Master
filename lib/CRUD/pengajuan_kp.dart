@@ -5,14 +5,14 @@ import 'package:rpl_mobile/CRUD/tambahMatakuliah.dart';
 import 'package:rpl_mobile/CRUD/updateMatakuliah.dart';
 import 'package:rpl_mobile/model.dart';
 
-class MatakuliahCRUD extends StatefulWidget {
-  MatakuliahCRUD({Key key, this.title}) : super(key: key);
+class KPCRUD extends StatefulWidget {
+  KPCRUD({Key key, this.title}) : super(key: key);
   final String title;
   @override
-  _MatakuliahCRUDState createState() => _MatakuliahCRUDState();
+  _KPCRUDState createState() => _KPCRUDState();
 }
 
-class _MatakuliahCRUDState extends State<MatakuliahCRUD> {
+class _KPCRUDState extends State<KPCRUD> {
   final _formKey = GlobalKey<FormState>();
 
   List<Matakuliah> listMatkul;
@@ -30,17 +30,16 @@ class _MatakuliahCRUDState extends State<MatakuliahCRUD> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CRUD MATAKULIAH"),
+        title: Text("Pengajuan KP"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              TambahMatakuliah(title: "Input Data Matakuliah")))
-                  .then(onGoBack);
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TambahMatakuliah(
+                          title: "Input Data Pengajuan KP"))).then(onGoBack);
             },
           )
         ],
