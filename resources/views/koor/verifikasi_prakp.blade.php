@@ -29,7 +29,7 @@ Verifikasi Pra KP
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$dt->nim}}</td>
                                     <td>{{$dt->lembaga}}</td>
-                                    <td>{{$dt->dokumen}} | <a href="dok_sk/{{$dt->dokumen}}" download="{{ $dt->dokumen }}">Lihat</a></td>
+                                    <td>{{$dt->dokumen}} | <a href="/file/pra/{{$dt->id}}">Lihat</a></td>
                                     <td>
                                         @if($dt->status == 3)
                                         <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>

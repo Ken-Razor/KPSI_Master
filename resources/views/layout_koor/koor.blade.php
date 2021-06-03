@@ -78,13 +78,13 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/koor/lihat/daftar/registrasi">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Melihat daftar registrasi KP</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/koor/batas/pelaksaan/kp">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Set Batas Pelaksanaan KP</span></a>
             </li>

@@ -16,6 +16,7 @@ use App\Sk_kp;
 use App\Pra_kp;
 use App\Kp;
 use App\Ajaran;
+use App\Batas_kp;
 
 
 use Auth;
@@ -145,18 +146,34 @@ class KoorController extends Controller
 
     }
 
-    // public function downsk($id)
-    // {
-    //     $down = Kp::findOrfail($id);
-    //     return response()->download(storage_path('public/dok_kp/'. $down->file));
-        
-    // }
+    public function downsk($id)
+    {
+        $down = Sk_kp::findOrfail($id);
+        $path = public_path('dok_sk/' . $down->dokumen);
+        header("Content-type: application/pdf");
+        header("Content-Length: " . filesize($path));
+        readfile($path);  
+    }
 
-    // function getFile($filename){
-            
-    //     return view('koor/verifikasi_kp', compact('i'));
-    // }
+    public function downpra($id)
+    {
+        $down = Pra_kp::findOrfail($id);
+        $path = public_path('dok_pra/' . $down->dokumen);
+        header("Content-type: application/pdf");
+        header("Content-Length: " . filesize($path));
+        readfile($path);  
+    }
 
+    public function downkp($id)
+    {
+        $down = Kp::findOrfail($id);
+        $path = public_path('dok_kp/' . $down->dokumen);
+        header("Content-type: application/pdf");
+        header("Content-Length: " . filesize($path));
+        readfile($path);  
+    }
+
+   
 
     public function penjadwalan_ujian()
     {
@@ -196,17 +213,45 @@ class KoorController extends Controller
         return view('/koor/lihat_jadwal_ujian', compact('data'));
     }
 
-     
 
+    public function melihat_daftar_registrasi()
+    {
+        $pra = DB::select("SELECT * FROM pra_kp WHERE status='1'");
+        $kp = DB::select("SELECT * FROM kp WHERE status='1'");
+        return view('koor/melihat_daftar_registrasi', compact('pra','kp'));
+    }
+
+    public function batas_pelaksanaan()
+    {
+         $data = Batas_kp::all();
+        return view('koor/batas_pelaksanaan', compact('data'));
+    }
+
+    public function form_batas_pelaksanaan()
+    {
+        $data = Batas_kp::all();
+        return view('/koor/form_batas_pelaksanaan', compact('data'));
+    }
+
+    public function form_batas_pelaksanaan_act(Request $request)
+    {
+        Batas_kp::create($request->all());
+         return redirect('/koor/batas/pelaksaan/kp')->with('sukses-tambah','Duhh berhasil nihh...');
+    }
+
+    public function form_ubah_batas_pelaksanaan($id)
+    {
+        $data = Batas_kp::find($id);
+        $datanya = Batas_kp::all();
+        return view('/koor/form_ubah_batas_pelaksanaan', compact('data','datanya'));
+    }
+
+    public function form_ubah_batas_pelaksanaan_act(Request $request, $id)
+    {
+        $data = Batas_kp::find($id);
+        $data->update($request->all());
+        return redirect('/koor/batas/pelaksaan/kp')->with('sukses-ubah','Duhh berhasil nihh...');
+    }
     
-
-
-
-
-
-   
-
-
-
     
 }

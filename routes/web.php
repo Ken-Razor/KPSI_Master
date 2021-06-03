@@ -74,10 +74,13 @@ Route::get('/koor/penjadwalan_ujian','KoorController@penjadwalan_ujian');
 Route::get('/file/sk/all','MahasiswaController@downloadall')->name('downloadfileall');
 
 
-Route::get('/file/sk/{id}','MahasiswaController@download')->name('downloadfile');
+Route::get('/file/sk/{id}','KoorController@downsk');
+Route::get('/file/pra/{id}','KoorController@downpra');
+Route::get('/file/kp/{id}','KoorController@downkp');
 
-// Route::get('/file/sk/{id}','KoorController@downsk');
-// Route::get('get/{filename}', [KoorController::class, 'verifikasi_kp']);
+
+
+
 
 
 Route::get('/setuju/surat_keterangan/{id}','KoorController@sk_setuju');
@@ -96,6 +99,24 @@ Route::get('/koor/atur/jadwal/ujian/{id}','KoorController@form_penjadwalan_ujian
 Route::post('/koor/atur/jadwal/ujian/simpan/{id}','KoorController@form_penjadwalan_ujian_act');
 
 Route::get('/koor/lihat/jadwal/{nim}','KoorController@lihat_jadwal_ujian');
+
+
+//melihat_daftar_registrasi
+
+Route::get('/koor/lihat/daftar/registrasi','KoorController@melihat_daftar_registrasi');
+
+//Batas Pelaksanaan 
+Route::get('/koor/batas/pelaksaan/kp','KoorController@batas_pelaksanaan');
+Route::get('/koor/tambah/batas/pelaksaan/kp','KoorController@form_batas_pelaksanaan');
+Route::post('/koor/tambah/batas/pelaksaan/kp/act','KoorController@form_batas_pelaksanaan_act');
+
+
+Route::get('/koor/ubah/batas/pelaksaan/kp/{id}','KoorController@form_ubah_batas_pelaksanaan');
+Route::post('/koor/ubah/batas/pelaksaan/kp/act/{id}','KoorController@form_ubah_batas_pelaksanaan_act');
+
+
+
+
 
 
 

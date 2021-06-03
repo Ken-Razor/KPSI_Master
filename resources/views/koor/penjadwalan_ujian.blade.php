@@ -8,7 +8,7 @@ Penjadwalan Ujian
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Daftar Mahasiswa sudah disetujui </h1>
+                    <h1 class="h3 mb-4 text-gray-800"> Jadwal Ujian</h1>
 
                     <table class="table table-striped table-hover">
                       <thead>

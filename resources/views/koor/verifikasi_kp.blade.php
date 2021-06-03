@@ -30,7 +30,7 @@ Verifikasi KP
                                     <td>{{$dt->nim}}</td>
                                     <td>{{$dt->lembaga}}</td>
                                     
-                                    <td>{{$dt->dokumen}} | <a href="dok_sk/{{$dt->dokumen}}" download="{{ $dt->dokumen }}">Lihat</a></td>
+                                    <td>{{$dt->dokumen}} | <a href="/file/kp/{{$dt->id}}">Lihat</a></td>
                                     <td>
                                         @if($dt->status == 3)
                                         <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>
