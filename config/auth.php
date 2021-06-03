@@ -67,6 +67,11 @@ return [
         'provider' => 'dosen',
         ],
 
+        'mahasiswa' => [
+        'driver' => 'session',
+        'provider' => 'mahasiswa',
+        ],
+
         'koor' => [
         'driver' => 'session',
         'provider' => 'koor',
@@ -115,6 +120,12 @@ return [
         'dosen' => [
         'driver' => 'eloquent',
         'model' => App\Dosen::class,
+        ],
+
+
+        'mahasiswa' => [
+        'driver' => 'eloquent',
+        'model' => App\Mahasiswa::class,
         ],
 
         'koor' => [

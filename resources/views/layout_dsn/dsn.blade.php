@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="/dosen/daftar_bimbingan">
+                <a class="nav-link" href="/dosen/bimbingan">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Daftar Bimbingan</span></a>
             </li>

@@ -9,6 +9,8 @@ use App\Mahasiswa;
 use App\User;
 use Auth;
 
+use App\Jadwal_ujian;
+
 
 class DosenController extends Controller
 {
@@ -27,5 +29,25 @@ class DosenController extends Controller
             $data = DB::select("SELECT * FROM dosen WHERE id = '$id'");
             // var_dump($data);
     	   return view('dosen/index_dosen');
+    }
+
+    public function dataBimbingan()
+    {
+        $id = Auth::guard('dosen')->user()->nama_dosen;
+
+        $data = DB::select("SELECT DISTINCT nim FROM jadwal_ujian 
+            WHERE dosbing='$id'");
+
+        // var_dump($data);
+        return view('dosen/data_bimbingan',compact('data'));
+        
+    }
+
+    public function dataUjian()
+    {
+        $id = Auth::guard('dosen')->user()->nama_dosen;
+        
+        $data = DB::select("SELECT DISTINCT nim, dosbing,dosuji, tanggal, jam, ruangan FROM jadwal_ujian WHERE dosbing='$id'");
+        return view('dosen/jadwal_ujian',compact('data'));
     }
 }

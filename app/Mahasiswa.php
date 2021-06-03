@@ -12,7 +12,7 @@ class Mahasiswa extends Authenticatable
 	use Notifiable;
     protected $table = 'mahasiswa';
 
-     // protected $guard = 'mahasiswa';
+     protected $guard = 'mahasiswa';
     // protected $fillable = ['google_id','nama_mhs','email'];
     protected $fillable = ['nim','nama_mhs','email','jenis_kelamin','no_telp_mhs','sks'];
 }

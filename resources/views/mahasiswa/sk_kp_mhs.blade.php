@@ -120,7 +120,7 @@ Pengajuan Surat Keterangan
       <!-- <th scope="col">ID  </th> -->
       <th scope="col">No</th>
       <th scope="col">Lembaga</th>
-      <th scope="col">Tanggal Ujian</th>
+      
       <th scope="col">Status</th>
       
     </tr>
@@ -130,7 +130,7 @@ Pengajuan Surat Keterangan
       <tr>
         <td>{{$loop->iteration}}</td>
         <td>{{$dsk->lembaga}}</td>
-        <td>Tanggal Ujian</td>
+        
         <td>
             @if($dsk->status == 3)
             <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>

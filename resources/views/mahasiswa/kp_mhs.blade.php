@@ -157,7 +157,7 @@ Pengajuan KP
                                       <!-- <th scope="col">ID  </th> -->
                                       <th scope="col">No</th>
                                       <th scope="col">Lembaga</th>
-                                      <th scope="col">Tanggal Ujian</th>
+                                      
                                       <th scope="col">Status</th>
                                       
                                     </tr>
@@ -167,7 +167,7 @@ Pengajuan KP
                                       <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$dpra->lembaga}}</td>
-                                        <td>Tanggal Ujian</td>
+                                        
                                         <td>
                                             @if($dpra->status == 3)
                                             <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>
@@ -198,7 +198,7 @@ Pengajuan KP
                                       <th scope="col">No</th>
                                       <th scope="col">Judul</th>
                                       <th scope="col">Pembimbing</th>
-                                      <th scope="col">Tanggal Ujian</th>
+                                      
                                       <th scope="col">Status</th>
                                       
                                     </tr>
@@ -209,7 +209,7 @@ Pengajuan KP
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$dkp->judul}}</td>
                                         <td>{{$dkp->penguji}}</td>
-                                        <td>Tanggal Ujian</td>
+                                        
                                         <td>@if($dkp->status == 3)
                                             <a href="#" class="btn btn-sm btn-warning">Belum diverifikasi</a>
                                             @elseif($dkp->status == 1)

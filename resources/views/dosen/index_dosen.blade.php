@@ -14,15 +14,7 @@ Halaman Utama Dosen
                         </div>
                         <!-- ***** Header Text End ***** -->   
 
-                        <div class="card shadow mb-4 border-bottom-primary">
-                            <img src="{{asset('img/xp2.jpg')}}" style="width:100%">
-                            <a href="" class="center">DATA BIMBINGAN</a>
-                        </div>
-
-                        <div class="card shadow mb-4 border-bottom-primary">
-                            <img src="{{asset('img/xp2.jpg')}}" style="width:100%">
-                            <a href="" class="center">JADWAL UJIAN</a>
-                        </div>
+                       
                     </div>
                     </div>
                 </div>

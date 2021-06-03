@@ -52,13 +52,6 @@ Route::get('dosen/index_dosen','DosenController@index_dosen');
 
 
 
-Route::get('/dosen/daftar_bimbingan', function () {
-    return view('dosen/data_bimbingan');
-});
-
-Route::get('/dosen/jadwal_ujian', function () {
-    return view('dosen/jadwal_ujian');
-});
 
 
 //Koordinator
@@ -114,6 +107,9 @@ Route::post('/koor/tambah/batas/pelaksaan/kp/act','KoorController@form_batas_pel
 Route::get('/koor/ubah/batas/pelaksaan/kp/{id}','KoorController@form_ubah_batas_pelaksanaan');
 Route::post('/koor/ubah/batas/pelaksaan/kp/act/{id}','KoorController@form_ubah_batas_pelaksanaan_act');
 
+
+Route::get('/dosen/bimbingan','DosenController@dataBimbingan');
+Route::get('/dosen/jadwal_ujian','DosenController@dataUjian');
 
 
 

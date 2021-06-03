@@ -145,7 +145,7 @@ Pengajuan Pra KP
       <!-- <th scope="col">ID  </th> -->
       <th scope="col">No</th>
       <th scope="col">Lembaga</th>
-      <th scope="col">Tanggal Ujian</th>
+      
       <th scope="col">Status</th>
       
     </tr>
@@ -155,7 +155,7 @@ Pengajuan Pra KP
       <tr>
         <td>{{$loop->iteration}}</td>
         <td>{{$dpra->lembaga}}</td>
-        <td>Tanggal Ujian</td>
+        
         
         <td>
             @if($dpra->status == 3)
