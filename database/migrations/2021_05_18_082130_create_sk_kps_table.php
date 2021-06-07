@@ -15,7 +15,7 @@ class CreateSkKpsTable extends Migration
     {
         Schema::create('sk_kp', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_mhs');
+            $table->string('id_mhs')->nullable();
             $table->string('semester')->nullable();
             $table->string('tahun')->nullable();
             $table->string('nim')->nullable();
