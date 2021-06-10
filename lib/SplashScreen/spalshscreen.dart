@@ -49,7 +49,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  "\n #RPL 2021\n \nSpecial Thanks to Ken Sanio 72180234\n \n",
+                  "\n #RPL 2021\n \nSpecial Thanks to Ken Will Kris\n \n",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,

@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:rpl_mobile/DashboardKPSI/dashboardKPSI.dart';
-import 'package:rpl_mobile/tugaspertemuan8.dart';
 import 'account.dart';
 import 'forgotPage.dart';
 // import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -14,10 +13,10 @@ import 'forgotPage.dart';
 // COPY BOLEH TAPI JANGAN DIJIPLAK YA :D, HARUS DIPAHAMI ALURNYA
 
 class MyBottomNavigationBar extends StatefulWidget {
-  final FirebaseUser user;
+  final String nama, email, foto;
   static const String id = 'my_bottom';
 
-  MyBottomNavigationBar(this.user);
+  MyBottomNavigationBar(this.nama, this.email, this.foto);
 
   @override
   _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();

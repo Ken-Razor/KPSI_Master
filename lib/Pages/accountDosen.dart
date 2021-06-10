@@ -13,25 +13,23 @@ import 'package:rpl_mobile/provider/google_sign_in.dart';
 // KARENA CODINGAN INI BELUM DIAJARKAN DI MATERI PERKULIAHAN
 // COPY BOLEH TAPI JANGAN DIJIPLAK YA :D, HARUS DIPAHAMI ALURNYA
 
-class Account extends StatefulWidget {
-  final String nama_mhs, email_mhs, foto;
-  Account(
-      {Key key,
-      this.str,
-      this.nama_mhs,
-      this.email_mhs,
-      this.foto,
-      String email_dosen,
-      String nama_dosen})
-      : super(key: key);
+class AccountDosen extends StatefulWidget {
+  final String nama_dosen, email_dosen, foto;
+  AccountDosen({
+    Key key,
+    this.str,
+    this.nama_dosen,
+    this.email_dosen,
+    this.foto,
+  }) : super(key: key);
 
   String str = "";
 
   @override
-  _AccountState createState() => _AccountState();
+  _AccountDosenState createState() => _AccountDosenState();
 }
 
-class _AccountState extends State<Account> {
+class _AccountDosenState extends State<AccountDosen> {
   FirebaseUser user;
 
   @override
@@ -65,7 +63,7 @@ class _AccountState extends State<Account> {
                   ),
                 ),
                 Text(
-                  '${widget.nama_mhs}',
+                  '${widget.nama_dosen}',
                   style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 20.0,
@@ -73,7 +71,7 @@ class _AccountState extends State<Account> {
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'INFORMATIONS SYSTEM STUDENT',
+                  'INFORMATIONS SYSTEM Lecture',
                   style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 20.0,
@@ -81,30 +79,6 @@ class _AccountState extends State<Account> {
                       letterSpacing: 0.5,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  height: 20.0,
-                  width: 300.0,
-                  child: Divider(
-                    color: Colors.teal.shade100,
-                  ),
-                ),
-                Card(
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.person,
-                        color: Colors.lightBlue,
-                      ),
-                      title: Text(
-                        '72180234 ',
-                        style: TextStyle(
-                          color: Colors.teal.shade900,
-                          fontFamily: 'Poppins',
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    )),
                 Card(
                     margin:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
@@ -114,7 +88,7 @@ class _AccountState extends State<Account> {
                         color: Colors.lightBlue,
                       ),
                       title: Text(
-                        '${widget.email_mhs}',
+                        '${widget.email_dosen}',
                         style: TextStyle(
                           color: Colors.teal.shade900,
                           fontFamily: 'Poppins',

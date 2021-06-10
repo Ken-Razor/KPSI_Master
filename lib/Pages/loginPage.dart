@@ -8,7 +8,10 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:rpl_mobile/API/apiService.dart';
 import 'package:rpl_mobile/Colors/constant.dart';
 import 'package:rpl_mobile/Animation/fadeAnimation.dart';
-import 'package:rpl_mobile/Pages/landingPage.dart';
+import 'package:rpl_mobile/DashboardKPSI/dashboardKPSI.dart';
+import 'package:rpl_mobile/DashboardKPSI/dashboardKPSIDosen.dart';
+import 'package:rpl_mobile/DashboardKPSI/dashboardKPSIKoor.dart';
+import 'package:rpl_mobile/Pages/forgotPage_test.dart';
 import 'package:rpl_mobile/model.dart';
 import 'package:rpl_mobile/provider/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,10 +61,39 @@ class _LoginPageState extends State<LoginPage> {
   void click() {
     signInWithGoogle().then((user) => {
           this.user = user,
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MyBottomNavigationBar(user)))
+          if (user != null && user.email.contains("si.ukdw.ac.id"))
+            {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KpsiDashboard(
+                            nama_mhs: user.displayName,
+                            email_mhs: user.email,
+                            foto: user.photoUrl,
+                          )))
+            }
+          else if (user != null && user.email.contains("gmail.com"))
+            {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KpsiDashboardDosen(
+                            nama_dosen: user.displayName,
+                            email_dosen: user.email,
+                            foto: user.photoUrl,
+                          )))
+            }
+          else if (user != null && user.email.contains("students.ukdw.ac.id"))
+            {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KpsiDashboardKoor(
+                            nama_koor: user.displayName,
+                            email_koor: user.email,
+                            foto: user.photoUrl,
+                          )))
+            }
         });
   }
 
@@ -119,162 +151,162 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: 100.0,
                   width: 300.0,
                   child: Divider(
                     color: Colors.white,
                   ),
                 ),
-                FadeAnimation(
-                  1.7,
-                  Card(
-                      margin: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 25.0),
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.person,
-                          color: Colors.lightBlue,
-                        ),
-                        title: TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty && value.length == 0) {
-                              return "*NIM anda tidak boleh kosong";
-                            } else if (value.length < 8 || value.length > 8) {
-                              return "NIM Anda kurang dari 8";
-                            } else
-                              return null;
-                          },
-                          controller: myUsernameController,
-                          onSaved: (String value) {
-                            this.login.nimnik = value;
-                          },
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Username',
-                              labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey,
-                              )),
-                        ),
-                      )),
-                ),
-                FadeAnimation(
-                  1.9,
-                  Card(
-                      margin: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 25.0),
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.lock,
-                          color: Colors.lightBlue,
-                        ),
-                        title: TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty && value.length == 0) {
-                              return "*Password tidak boleh kosong gan";
-                            } else {
-                              return null;
-                            }
-                          },
-                          obscureText: _obscureText,
-                          controller: myPasswordController,
-                          onSaved: (String value) {
-                            this.login.password = value;
-                          },
-                          autofocus: false,
-                          // initialValue: '',
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Password',
-                            suffixIcon: GestureDetector(
-                              onTap: () {
-                                _toggle();
-                              },
-                              child: Icon(
-                                _obscureText
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                                color: _obscureText
-                                    ? Colors.grey
-                                    : Colors.lightGreen[600],
-                              ),
-                            ),
-                            labelStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      )),
-                ),
-                FadeAnimation(
-                  2.1,
-                  Container(
-                      alignment: Alignment.topRight,
-                      width: 350,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgotPage()));
-                        },
-                        child: Text(
-                          "Forgot Password?",
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      )),
-                ),
-                FadeAnimation(
-                  2.3,
-                  Card(
-                      color: Colors.lightBlue[600],
-                      margin: EdgeInsets.symmetric(
-                          vertical: 20.0, horizontal: 25.0),
-                      child: new InkWell(
-                        onTap: () async {
-                          if (_formKey.currentState.validate()) {
-                            _formKey.currentState.save();
-                            ApiServices()
-                                .loginIn(this.login)
-                                .then((isSuccess) async {
-                              if (isSuccess) {
-                                //_displayDialogLogin(context);
-                                SharedPreferences pref =
-                                    await SharedPreferences.getInstance();
-                                await pref.setInt("is_login_progmob", 1);
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          MyBottomNavigationBar(user)),
-                                );
-                              } else {
-                                _displayDialogCantLogin(context);
-                              }
-                            });
-                          }
-                        },
-                        child: Container(
-                          width: 400.0,
-                          height: 55.0,
-                          child: ListTile(
-                              title: Text(
-                            "LOGIN",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: kBackgroundColor,
-                            ),
-                          )),
-                        ),
-                      )),
-                ),
+                // FadeAnimation(
+                //   1.7,
+                //   Card(
+                //       margin: EdgeInsets.symmetric(
+                //           vertical: 10.0, horizontal: 25.0),
+                //       child: ListTile(
+                //         leading: Icon(
+                //           Icons.person,
+                //           color: Colors.lightBlue,
+                //         ),
+                //         title: TextFormField(
+                //           validator: (value) {
+                //             if (value.isEmpty && value.length == 0) {
+                //               return "*NIM anda tidak boleh kosong";
+                //             } else if (value.length < 8 || value.length > 8) {
+                //               return "NIM Anda kurang dari 8";
+                //             } else
+                //               return null;
+                //           },
+                //           controller: myUsernameController,
+                //           onSaved: (String value) {
+                //             this.login.nimnik = value;
+                //           },
+                //           decoration: InputDecoration(
+                //               border: InputBorder.none,
+                //               hintText: 'Username',
+                //               labelStyle: TextStyle(
+                //                 fontWeight: FontWeight.bold,
+                //                 color: Colors.grey,
+                //               )),
+                //         ),
+                //       )),
+                // ),
+                // FadeAnimation(
+                //   1.9,
+                //   Card(
+                //       margin: EdgeInsets.symmetric(
+                //           vertical: 10.0, horizontal: 25.0),
+                //       child: ListTile(
+                //         leading: Icon(
+                //           Icons.lock,
+                //           color: Colors.lightBlue,
+                //         ),
+                //         title: TextFormField(
+                //           validator: (value) {
+                //             if (value.isEmpty && value.length == 0) {
+                //               return "*Password tidak boleh kosong gan";
+                //             } else {
+                //               return null;
+                //             }
+                //           },
+                //           obscureText: _obscureText,
+                //           controller: myPasswordController,
+                //           onSaved: (String value) {
+                //             this.login.password = value;
+                //           },
+                //           autofocus: false,
+                //           // initialValue: '',
+                //           keyboardType: TextInputType.text,
+                //           decoration: InputDecoration(
+                //             border: InputBorder.none,
+                //             hintText: 'Password',
+                //             suffixIcon: GestureDetector(
+                //               onTap: () {
+                //                 _toggle();
+                //               },
+                //               child: Icon(
+                //                 _obscureText
+                //                     ? Icons.visibility_off
+                //                     : Icons.visibility,
+                //                 color: _obscureText
+                //                     ? Colors.grey
+                //                     : Colors.lightGreen[600],
+                //               ),
+                //             ),
+                //             labelStyle: TextStyle(
+                //               fontWeight: FontWeight.bold,
+                //               color: Colors.grey,
+                //             ),
+                //           ),
+                //         ),
+                //       )),
+                // ),
+                // FadeAnimation(
+                //   2.1,
+                //   Container(
+                //       alignment: Alignment.topRight,
+                //       width: 350,
+                //       child: GestureDetector(
+                //         onTap: () {
+                //           Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                   builder: (context) => ForgotPage()));
+                //         },
+                //         child: Text(
+                //           "Forgot Password?",
+                //           style: TextStyle(
+                //             color: kPrimaryColor,
+                //             fontWeight: FontWeight.w600,
+                //           ),
+                //         ),
+                //       )),
+                // ),
+                // FadeAnimation(
+                //   2.3,
+                //   Card(
+                //       color: Colors.lightBlue[600],
+                //       margin: EdgeInsets.symmetric(
+                //           vertical: 20.0, horizontal: 25.0),
+                //       child: new InkWell(
+                //         onTap: () async {
+                //           if (_formKey.currentState.validate()) {
+                //             _formKey.currentState.save();
+                //             ApiServices()
+                //                 .loginIn(this.login)
+                //                 .then((isSuccess) async {
+                //               if (isSuccess) {
+                //                 //_displayDialogLogin(context);
+                //                 SharedPreferences pref =
+                //                     await SharedPreferences.getInstance();
+                //                 await pref.setInt("is_login_progmob", 1);
+                //                 Navigator.pushReplacement(
+                //                   context,
+                //                   MaterialPageRoute(
+                //                       builder: (context) =>
+                //                           MyBottomNavigationBar(user)),
+                //                 );
+                //               } else {
+                //                 _displayDialogCantLogin(context);
+                //               }
+                //             });
+                //           }
+                //         },
+                //         child: Container(
+                //           width: 400.0,
+                //           height: 55.0,
+                //           child: ListTile(
+                //               title: Text(
+                //             "LOGIN",
+                //             textAlign: TextAlign.center,
+                //             style: TextStyle(
+                //               fontSize: 18,
+                //               fontWeight: FontWeight.bold,
+                //               color: kBackgroundColor,
+                //             ),
+                //           )),
+                //         ),
+                //       )),
+                // ),
                 FadeAnimation(
                   2.3,
                   Card(
@@ -323,12 +355,12 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(width: 5.0),
                       InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgotPage()));
-                        },
+                        // onTap: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => ForgotPage()));
+                        // },
                         child: Text(
                           'Sign Up',
                           style: TextStyle(

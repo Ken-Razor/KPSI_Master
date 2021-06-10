@@ -8,12 +8,16 @@ import 'package:flutter/services.dart';
 // KARENA CODINGAN INI BELUM DIAJARKAN DI MATERI PERKULIAHAN
 // COPY BOLEH TAPI JANGAN DIJIPLAK YA :D, HARUS DIPAHAMI ALURNYA
 
-class ForgotPage extends StatefulWidget {
+class ForgotPageTest extends StatefulWidget {
+  final FirebaseUser user;
+
+  ForgotPageTest(this.user);
+
   @override
-  _ForgotPageState createState() => _ForgotPageState();
+  _ForgotPageTestState createState() => _ForgotPageTestState();
 }
 
-class _ForgotPageState extends State<ForgotPage> {
+class _ForgotPageTestState extends State<ForgotPageTest> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

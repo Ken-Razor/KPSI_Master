@@ -25,3 +25,10 @@ const kTitleTextstyle = TextStyle(
   color: kTitleTextColor,
   fontWeight: FontWeight.bold,
 );
+
+class Constants {
+  static const String Settings = 'Edit Profile';
+  static const String SignOut = 'Log out';
+
+  static const List<String> choices = <String>[Settings, SignOut];
+}
