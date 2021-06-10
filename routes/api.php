@@ -48,3 +48,45 @@ Route::get('/mahasiswa/tgl_ujian/{nim}','ApiMahasiswaController@lihat_jadwal_for
 
 
 
+//KOOR SK
+Route::get('/koor/verifikasi/sk','ApiKoor@verifikasi_sk');
+Route::post('/koor/verifikasi/sk/status/{id}','ApiKoor@status_sk');
+Route::put('/koor/verifikasi/sk/status/update','ApiKoor@updateStatusSk');
+
+//KOOR PRA
+Route::get('/koor/verifikasi/pra','ApiKoor@verifikasi_pra');
+Route::post('/koor/verifikasi/pra/status/{id}','ApiKoor@status_pra');
+Route::put('/koor/verifikasi/pra/status/update','ApiKoor@updateStatusPra');
+
+//KOOR KP
+Route::get('/koor/verifikasi/kp','ApiKoor@verifikasi_kp');
+Route::post('/koor/verifikasi/kp/status/{id}','ApiKoor@status_kp');
+Route::put('/koor/verifikasi/kp/status/update','ApiKoor@updateStatusKp');
+
+
+//JADWAL
+Route::get('/koor/jadwal/kp','ApiKoor@penjadwalan_ujian');
+Route::get('/koor/jadwal/ujian','ApiKoor@jadwal_ujian_koor');
+
+Route::put('/koor/atur/jadwal/ujian','ApiKoor@form_penjadwalan_ujian');
+
+Route::post('/koor/atur/jadwal/ujian/simpan','ApiKoor@form_penjadwalan_ujian_act');
+
+
+//Melihat daftar registrasi
+Route::get('koor/lihat/daftar/registrasi','ApiKoor@melihat_daftar_registrasi');
+
+
+//batas kp
+Route::get('/koor/batas/kp','ApiKoor@batas_kp');
+Route::put('/koor/ubah/batas/pelaksaan/kp','ApiKoor@form_ubah_batas_pelaksanaan_act');
+
+//AJARAN
+Route::get('/koor/set/ajaran','ApiKoor@setajaran');
+Route::put('/koor/set/ajaran/ubah','ApiKoor@setajaranAct');
+
+
+
+
+
+

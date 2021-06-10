@@ -10,6 +10,12 @@ use App\Sk_kp;
 use App\Pra_kp;
 use App\Kp;
 
+use App\Koor;
+use App\Dosen;
+
+use App\Ajaran;
+use App\Batas_kp;
+
 
 
 
